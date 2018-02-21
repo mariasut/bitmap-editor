@@ -1,2 +1,7 @@
-# bitmap-editor
-a Ruby program that simulates a basic interactive bitmap editor
+# Bitmap editor
+
+..
+
+# Running
+
+`>bin/bitmap_editor examples/show.txt`

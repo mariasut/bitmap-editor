@@ -5,12 +5,60 @@ class BitmapEditor
 
     File.open(file).each do |line|
       line = line.chomp
-      case line
-      when 'S'
-          puts "There is no image"
-      else
-          puts 'unrecognised command :('
-      end
+      execute_command(line)
     end
   end
+
+  def execute_command(input)
+    arguments = input.split(" ")
+    command = arguments.shift
+
+    run_command(command, arguments)
+  end
+
+  private
+
+  def run_command(command, arguments)
+    case command
+      when 'I'
+        create_image(arguments)
+      when 'C'
+        clear_table
+      when 'L'
+        colour_pixel(arguments)
+      when 'V'
+        draw_vertical_segment(arguments)
+      when 'H'
+        draw_horizontal_segment(arguments)
+      when 'S'
+        show_image
+      else
+        puts 'unrecognised command :('
+    end
+  end
+
+  def create_image(arguments)
+    puts "merge"
+  end
+
+  def clear_table
+
+  end
+
+  def colour_pixel(arguments)
+
+  end
+
+  def draw_vertical_segment(arguments)
+
+  end
+
+  def draw_horizontal_segment(arguments)
+
+  end
+
+  def show_image
+
+  end
+
 end

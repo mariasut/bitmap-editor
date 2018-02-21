@@ -1,4 +1,11 @@
+require_relative 'image'
+
 class BitmapEditor
+  attr_reader :image
+
+  def initialize
+    @image = Image.new
+  end
 
   def run(file)
     return puts "please provide correct file" if file.nil? || !File.exists?(file)
@@ -38,7 +45,8 @@ class BitmapEditor
   end
 
   def create_image(arguments)
-    puts "merge"
+    width, height = arguments
+    @image = Image.new(width, height)
   end
 
   def clear_table

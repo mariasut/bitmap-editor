@@ -1,7 +1,10 @@
 # Bitmap editor
 
-..
+Simulates a basic interactive bitmap editor
 
 # Running
 
-`>bin/bitmap_editor examples/show.txt`
+`rake`
+
+to run the tests:
+`rake test`

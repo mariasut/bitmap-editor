@@ -1,10 +1,8 @@
-require_relative 'image'
-
 class BitmapEditor
   attr_reader :image
 
-  def initialize
-    @image = Image.new
+  def initialize(image)
+    @image = image
   end
 
   def run(file)
@@ -16,57 +14,59 @@ class BitmapEditor
     end
   end
 
+  private
+
   def execute_command(input)
+    # get all the arguments
     arguments = input.split(" ")
     command = arguments.shift
 
     run_command(command, arguments)
   end
 
-  private
-
   def run_command(command, arguments)
+    # process each command
     case command
-      when 'I'
+      when "I"
         create_image(arguments)
-      when 'C'
+      when "C"
         clear_table
-      when 'L'
+      when "L"
         colour_pixel(arguments)
-      when 'V'
+      when "V"
         draw_vertical_segment(arguments)
-      when 'H'
+      when "H"
         draw_horizontal_segment(arguments)
-      when 'S'
-        show_image
+      when "S"
+        @image.show_image
       else
-        puts 'unrecognised command :('
+        abort "Unrecognised command :("
     end
   end
 
   def create_image(arguments)
-    width, height = arguments
-    @image = Image.new(width, height)
+    column, row = arguments
+    @image = Image.new(column, row)
   end
 
   def clear_table
-
+    @image.create_image
   end
 
   def colour_pixel(arguments)
-
+    arguments.length == 3 ? @image.colour_pixel(arguments) : display_error
   end
 
   def draw_vertical_segment(arguments)
-
+    arguments.length == 4 ? @image.draw_vertical_segment(arguments) : display_error
   end
 
   def draw_horizontal_segment(arguments)
-
+    arguments.length == 4 ? @image.draw_horizontal_segment(arguments) : display_error
   end
 
-  def show_image
-
+  def display_error
+    abort "Command contains invalid parameters"
   end
 
 end
